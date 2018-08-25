@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 int main() {
 
@@ -11,9 +12,9 @@ int main() {
  std::cout << "ingrese el peso maximo:" ;
  std::cin >> peso;  
   
- float arrayPeso[5]; //={5,3,5,1,2};
- float arrayCalorias[5]; //={3,5,2,8,3};
-
+ float arrayPeso[5]{5,3,5,1,2};
+ float arrayCalorias[5]{3,5,2,8,3};
+/*
  std::cout << "ingrese el peso del primer elemento:";
  std::cin  >> arrayPeso[0];
  std::cout << "ingrese las calorias del primer elemento:";
@@ -34,7 +35,7 @@ int main() {
  std::cin  >> arrayPeso[4];
  std::cout << "ingrese las calorias del quinto elemento:";
  std::cin  >> arrayCalorias[4];
-
+*/
 
  float proporcion[5];
  float posiciones[5];
@@ -42,15 +43,10 @@ int main() {
  for(int i=0;i<5;i++){
   proporcion[i]=arrayPeso[i]/arrayCalorias[i];
  }
+ 
 
- for (int i = 0; i < 5 - 1; ++i){
-		int j = i;
-		for (int x = i + 1; x < 5; ++x){
-	    if (proporcion[x] < proporcion[j])
-				j = x;
-		}
-    std::swap(proporcion[i], proporcion[j]);
-	}
+ std::sort(proporcion, proporcion+5);
+    
  int sumaPeso     = 0;
  int sumaCalorias = 0;
  int y=0;
