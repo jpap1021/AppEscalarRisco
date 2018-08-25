@@ -12,9 +12,9 @@ int main() {
  std::cout << "ingrese el peso maximo:" ;
  std::cin >> peso;  
   
- float arrayPeso[5]{5,3,5,1,2};
- float arrayCalorias[5]{3,5,2,8,3};
-/*
+ float arrayPeso[5];//={5,3,5,1,2};
+ float arrayCalorias[5];//={3,5,2,8,3};
+
  std::cout << "ingrese el peso del primer elemento:";
  std::cin  >> arrayPeso[0];
  std::cout << "ingrese las calorias del primer elemento:";
@@ -35,21 +35,21 @@ int main() {
  std::cin  >> arrayPeso[4];
  std::cout << "ingrese las calorias del quinto elemento:";
  std::cin  >> arrayCalorias[4];
-*/
 
+ int lenght = sizeof(arrayPeso)/sizeof(arrayPeso[0]); 
  float proporcion[5];
  float posiciones[5];
 
  
  std::transform(arrayPeso,arrayPeso+5,arrayCalorias,proporcion,std::divides<float>());
 
- std::sort(proporcion, proporcion+5);
+ std::sort(proporcion, proporcion+lenght);
     
  int sumaPeso     = 0;
  int sumaCalorias = 0;
  int y=0;
- for(int i =0; i<5;i++){ 
-    for(int j=0; j<5; j++){
+ for(int i =0; i<lenght;i++){ 
+    for(int j=0; j<lenght; j++){
      if(arrayPeso[i]/arrayCalorias[i] == proporcion[j]){
          posiciones[i]= j;
          if (sumaPeso <peso){
@@ -65,7 +65,7 @@ int main() {
     }
   }
    std::cout << "los elementos viables serian "; 
-  for(int i=0; i < 5-y; i++){
+  for(int i=0; i < lenght-y; i++){
     std::cout << "E" << posiciones[i] + 1 << ' ' ;
     }
     std::cout << "ya que su peso seria " << sumaPeso << " y brindan " << sumaCalorias << " calorias \n"; 
