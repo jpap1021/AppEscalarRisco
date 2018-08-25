@@ -40,10 +40,8 @@ int main() {
  float proporcion[5];
  float posiciones[5];
 
- for(int i=0;i<5;i++){
-  proporcion[i]=arrayPeso[i]/arrayCalorias[i];
- }
  
+ std::transform(arrayPeso,arrayPeso+5,arrayCalorias,proporcion,std::divides<float>());
 
  std::sort(proporcion, proporcion+5);
     
